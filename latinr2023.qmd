@@ -1,0 +1,32 @@
+---
+title: "Sistema de gestión de proyectos para la administración pública con shiny"
+author: Samuel Calderon
+date: 2023-10-19
+date-format: " YYYY"
+---
+
+## Quién soy
+
+- Científico Político de la Universidad Antonio Ruiz de Montoya (Lima, Perú)
+- 100% de mi experiencia laboral ha sido en el Estado:
+    - Encuestador, supervisor de encuestadores
+    - Asistente académico
+    - Analista de datos / gestión de la información
+- Me gusta desarrollar paquetes para R
+- Tengo una [página web](https://www.samuelenrique.com)
+
+
+## Entendiendo el Estado
+
+![](img/Diagrama - Estado.png)
+
+## Dentro de la  caja
+
+- Norma Técnica Nº 001-2018-SGP: Gestión por procesos 
+
+![](img/Diagrama - gestion procesos.png){max-height=700px fig-align=center}
+
+
+
+
+
