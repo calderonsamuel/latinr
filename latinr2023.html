@@ -351,20 +351,79 @@ Samuel Calderon
 <li>Tengo una <a href="https://www.samuelenrique.com">página web</a></li>
 </ul>
 </section>
+<section>
+<section id="procesos-en-la-administración-pública" class="title-slide slide level1 center">
+<h1>Procesos en la administración pública</h1>
+
+</section>
 <section id="entendiendo-el-estado" class="slide level2">
 <h2>Entendiendo el Estado</h2>
 
 <img data-src="img/Diagrama%20-%20Estado.png" class="r-stretch"></section>
 <section id="dentro-de-la-caja" class="slide level2">
 <h2>Dentro de la caja</h2>
+
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/Diagrama%20-%20gestion%20procesos.png" height="500"></p>
+</figure>
+</div>
+<aside><div>
+<p>Fuente: <a href="https://www.gob.pe/institucion/pcm/normas-legales/235944-006-2018-pcm-sgp">Norma Técnica Nº 001-2018-SGP - IMPLEMENTACIÓN DE LA GESTIÓN POR PROCESOS EN LAS ENTIDADES DE LA ADMINISTRACIÓN PÚBLICA</a></p>
+</div></aside></section>
+<section id="medición-y-análisis-de-procesos-1" class="slide level2">
+<h2>Medición y análisis de procesos (1)</h2>
+<p><img data-src="img/Proceso%20-%20ejemplo.png"></p>
+
+<aside><div>
+<p>Fuente: <a href="https://www.gob.pe/institucion/pcm/informes-publicaciones/2065136-implementacion-de-la-gestion-por-procesos-en-la-administracion-publica">Guía de implementación de la Gestión por Procesos en la administración pública</a></p>
+</div></aside></section>
+<section id="medición-y-análisis-de-procesos-2" class="slide level2">
+<h2>Medición y análisis de procesos (2)</h2>
 <ul>
-<li>Norma Técnica Nº 001-2018-SGP: Gestión por procesos</li>
+<li>Requiere definir indicadores de desempeño (eficacia, eficiencia, calidad y economía)</li>
+<li>Sirve para identificar problemas</li>
+<li>Debe realizarse a intervalos determinados</li>
+<li>Debería servir para tomar decisiones</li>
 </ul>
 
-<img data-src="img/Diagrama%20-%20gestion%20procesos.png" data-max-height="700px" class="r-stretch quarto-figure-center"><div class="footer footer-default">
+<aside><div>
+<p>Fuente: <a href="https://www.gob.pe/institucion/pcm/informes-publicaciones/2065136-implementacion-de-la-gestion-por-procesos-en-la-administracion-publica">Guía de implementación de la Gestión por Procesos en la administración pública</a></p>
+</div></aside></section></section>
+<section>
+<section id="shiny-app" class="title-slide slide level1 center">
+<h1>Shiny app</h1>
+
+</section>
+<section id="mínimos-requeridos" class="slide level2">
+<h2>Mínimos requeridos</h2>
+<div class="columns">
+<div class="column" style="width:50%">
+<ul>
+<li>No instalación</li>
+<li>Login sencillo</li>
+<li>Información centralizada</li>
+<li>Interfaz amigable</li>
+</ul>
+</div><div class="column" style="width: 50%">
+<ul>
+<li class="fragment"><code>{shiny}</code> app</li>
+<li class="fragment"><code>{firebase}</code> auth</li>
+<li class="fragment"><code>{RMariaDB}</code> + <code>{R6}</code></li>
+<li class="fragment"><code>{bs4dash}</code> + <code>{shinyWdigets}</code></li>
+</ul>
+</div>
+</div>
+<div>
+<ul>
+<li class="fragment">Para mayor comodidad: <code>{golem}</code>, <code>{dplyr}</code>, <code>{purrr}</code>, <code>{glue}</code>, <code>{writexl}</code></li>
+<li class="fragment">Hosting: App(<a href="https://www.shinyapps.io/">shinyapps.io</a>), DB (<a href="https://cloud.google.com/">Google Cloud</a>)</li>
+</ul>
+</div>
+<div class="footer footer-default">
 
 </div>
-</section>
+</section></section>
     </div>
   </div>
 
