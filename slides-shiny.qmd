@@ -240,4 +240,8 @@ User <- R6::R6Class("User",
 4.  Reproducibilidad (docker, podman)
 5.  CRAN?
 
+::: aside
+Github repo: <https://github.com/calderonsamuel/appReporteAvance>
+:::
+
 # ¡Gracias!
