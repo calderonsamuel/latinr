@@ -89,7 +89,9 @@ Fuente: [Guía de implementación de la Gestión por Procesos en la administraci
 
 ## Login sencillo
 
-{{< video video/login.mp4 height="600" >}}
+<!-- {{< video src="video/login.mp4" height="600" >}} -->
+
+![](video/login.mp4){height="600px"}
 
 ------------------------------------------------------------------------
 
