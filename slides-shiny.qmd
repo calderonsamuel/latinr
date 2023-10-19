@@ -27,7 +27,7 @@ format:
     -   Asistente académico
     -   Analista de datos / gestión de la información
 -   Me gusta desarrollar paquetes para R
--   Tengo una [página web](https://www.samuelenrique.com)
+-   Tengo una web : <https://www.samuelenrique.com>
 
 # Procesos en la administración pública
 
