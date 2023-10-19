@@ -1,0 +1,241 @@
+---
+title: "Sistema de gestión de proyectos para la administración pública con shiny"
+author: Samuel Calderon, Diego Sanchez, Leanna Zuñiga, Gelin Espinoza
+date: 2023-10-19
+date-format: "[LatinR] YYYY"
+
+format: 
+  revealjs:
+    theme: [simple, css/custom.scss]
+    logo: img/logo-latin-r.png
+    footer: "Sistema de gestión de proyectos para la administración pública con shiny"
+---
+
+## Equipo completo {background-image="img/equipo-completo.jpeg"}
+
+```{css, echo=FALSE}
+.reveal code {
+  max-height: 100% !important;
+}
+```
+
+## Quién soy
+
+-   Científico Político de la Universidad Antonio Ruiz de Montoya (Lima, Perú)
+-   100% de mi experiencia laboral ha sido en el Estado:
+    -   Encuestador, supervisor de encuestadores
+    -   Asistente académico
+    -   Analista de datos / gestión de la información
+-   Me gusta desarrollar paquetes para R
+-   Tengo una [página web](https://www.samuelenrique.com)
+
+# Procesos en la administración pública
+
+## Entendiendo el Estado 
+
+![](img/Diagrama%20-%20Estado.png)
+
+## Dentro de la caja 
+
+::: aside
+Fuente: [Norma Técnica Nº 001-2018-SGP - IMPLEMENTACIÓN DE LA GESTIÓN POR PROCESOS EN LAS ENTIDADES DE LA ADMINISTRACIÓN PÚBLICA](https://www.gob.pe/institucion/pcm/normas-legales/235944-006-2018-pcm-sgp)
+:::
+
+![](img/Diagrama%20-%20gestion%20procesos.png){height="500px" fig-align="center"}
+
+## Medición y análisis de procesos (1)
+
+![](img/Proceso%20-%20ejemplo.png)
+
+::: aside
+Fuente: [Guía de implementación de la Gestión por Procesos en la administración pública](https://www.gob.pe/institucion/pcm/informes-publicaciones/2065136-implementacion-de-la-gestion-por-procesos-en-la-administracion-publica)
+:::
+
+## Medición y análisis de procesos (2)
+
+-   Requiere definir indicadores de desempeño (eficacia, eficiencia, calidad y economía)
+-   Sirve para identificar problemas
+-   Debe realizarse a intervalos determinados
+-   Debería servir para tomar decisiones
+
+::: aside
+Fuente: [Guía de implementación de la Gestión por Procesos en la administración pública](https://www.gob.pe/institucion/pcm/informes-publicaciones/2065136-implementacion-de-la-gestion-por-procesos-en-la-administracion-publica)
+:::
+
+# Shiny app
+
+## Mínimos requeridos
+
+::: columns
+::: {.column style="width:50%"}
+-   No instalación
+-   Login sencillo
+-   Información centralizada
+-   Interfaz amigable
+:::
+
+::: {.column .incremental style="width: 50%"}
+-   `{shiny}` app
+-   `{firebase}` auth
+-   `{RMariaDB}` + `{R6}`
+-   `{bs4dash}` + `{shinyWidgets}`
+:::
+:::
+
+::: incremental
+-   Para mayor comodidad: `{golem}`, `{dplyr}`, `{purrr}`, `{glue}`, `{writexl}`
+-   Hosting: App([shinyapps.io](https://www.shinyapps.io/)), DB ([Google Cloud](https://cloud.google.com/))
+:::
+
+## Login sencillo
+
+{{< video video/login.mp4 height="600" >}}
+
+------------------------------------------------------------------------
+
+::: aside
+[Documentación de `{firebase}`](https://firebase.john-coene.com/): John Coene
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "1,4,5,7,15,17,18,19"
+ui <- fluidPage(
+  useFirebase(), # import dependencies
+  firebaseUIContainer(),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+  f <- FirebaseUI$
+    new()$ # instantiate
+    set_providers( # define providers
+      google = TRUE
+    )$
+    launch() # launch
+
+  output$plot <- renderPlot({
+    f$req_sign_in() # require sign in
+    plot(cars)
+  })
+}
+```
+
+------------------------------------------------------------------------
+
+::: aside
+[Documentación de `{firebase}`](https://firebase.john-coene.com/): John Coene
+:::
+
+```{r}
+#| eval: false
+#| echo: true
+#| code-line-numbers: "2,3,8-13,16"
+ui <- fluidPage(
+  useFirebase(), # import dependencies
+  firebaseUIContainer(),
+  plotOutput("plot")
+)
+
+server <- function(input, output){
+  f <- FirebaseUI$
+    new()$ # instantiate
+    set_providers( # define providers
+      google = TRUE
+    )$
+    launch() # launch
+
+  output$plot <- renderPlot({
+    f$req_sign_in() # require sign in
+    plot(cars)
+  })
+}
+```
+
+## Información centralizada
+
+```{r}
+#| eval: false
+#| echo: true
+# Primera versión
+make_connection <- function() {
+    DBI::dbConnect(drv = RMariaDB::MariaDB(), ...)
+}
+
+stop_connection <- function(con) DBI::dbDisconnect(con)
+
+user_add <- function(name) {
+    con <- make_connection()
+    
+    st <- glue::glue_sql("INSERT INTO users SET name = {name}", 
+                         con)
+    DBI::dbExecute(con, st)
+    
+    stop_connection(con)
+}
+
+```
+
+------------------------------------------------------------------------
+
+```{r}
+#| eval: false
+#| echo: true
+# Versión actual
+DBManager <- R6::R6Class("DBManager",
+    con = NULL,
+    public = list(
+        initialize = function() {
+            self$con <- DBI::dbConnect(drv = RMariaDB::MariaDB(), ...)
+        },
+        finalize = function() {DBI::dbDisconnect(self$con)}
+    )
+)
+
+User <- R6::R6Class("User",
+    inherit = DBManager,
+    public = list(
+        initialize = function() {super$initialize()},
+        user_add = function(name) {
+            st <- glue::glue_sql("INSERT INTO users SET name = {name}", 
+                                 self$con)
+            DBI::dbExecute(self$con, st)
+        }
+    )
+)
+```
+
+## Interfaz amigable (procesos)
+
+![](img/Pantalla%20-%20procesos.png)
+
+## Interfaz amigable (mediciones)
+
+![](img/Pantalla%20-%20mediciones.png)
+
+## Interfaz amigable (nueva tarea)
+
+![](img/Pantalla%20-%20nueva%20tarea.png)
+
+## Interfaz amigable (caja de tarea)
+
+![](img/Pantalla%20-%20caja%20de%20tarea.png){height="500px" fig-align="center"}
+
+## Interfaz amigable (historial)
+
+![](img/Pantalla%20-%20historial.png){height="600px" fig-align="center"}
+
+# Retos pendientes
+
+------------------------------------------------------------------------
+
+1.  Escalar a nivel organizacional
+    -   Async
+    -   API
+2.  Manual exhaustivo y generalizado a diferentes tipos de procesos
+3.  Automatización de reportes
+4.  Reproducibilidad (docker, podman)
+5.  CRAN?
+
+# ¡Gracias!

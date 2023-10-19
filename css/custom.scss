@@ -1,0 +1,21 @@
+/*-- scss:defaults --*/
+
+$body-bg: #fff5ed;
+$body-color: #0e3f69;
+
+/*-- scss:rules --*/
+
+/*
+.reveal .slide blockquote {
+  border-left: 3px solid $text-muted;
+  padding-left: 0.5em;
+}
+
+.quarto-title-author-name {
+    color: #303030;
+}
+*/
+
+.reveal h2 {
+    text-shadow: 0px 0px 10px $body-bg;
+}
