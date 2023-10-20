@@ -1,0 +1,36 @@
+---
+title: "Un paquete para facilitar la rendición de cuentas del estado peruano"
+author: Samuel Calderon
+date: 2023-10-20
+date-format: "[LatinR] YYYY"
+
+format: 
+  revealjs:
+    theme: [simple, css/custom.scss]
+    logo: img/logo-latin-r.png
+    footer: "Un paquete para facilitar la rendición de cuentas del estado peruano"
+---
+
+## Quién soy
+
+-   Científico Político de la Universidad Antonio Ruiz de Montoya (Lima, Perú)
+-   100% de mi experiencia laboral ha sido en el Estado:
+    -   Encuestador, supervisor de encuestadores
+    -   Asistente académico
+    -   Analista de datos / gestión de la información
+-   Me gusta desarrollar paquetes para R
+-   Tengo una web : <https://www.samuelenrique.com>
+
+# Datos abiertas
+
+## Características
+
+Los Datos Abiertos son aquellos que se encuentran disponibles en formatos estándares, abiertos y están disponibles en la web para que cualquier persona pueda acceder a ellos, reutilizarlos, combinarlos y redistribuirlos para crear nuevos servicios, visualizaciones o realizar investigaciones a partir de ellos. Las únicas restricciones posibles para su uso son la normativa vigente, la atribución y el compartirlos de la misma forma.
+
+## Características
+
+- Disponibles en formatos estándar
+- De fácil acceso
+- Uso libre
+
+
