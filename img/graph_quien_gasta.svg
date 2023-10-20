@@ -1,0 +1,130 @@
+<svg viewBox="0.00 0.00 404.00 152.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="width: 100%; height: 100%;">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
+<title>%0</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-148 400,-148 400,4 -4,4"></polygon>
+<!-- 1&#45;&gt;2 -->
+<g id="edge1" class="edge">
+<title>1-&gt;2</title>
+<path fill="none" stroke="#cccccc" d="M36.1686,-99C45.3922,-99 56.705,-99 66.5754,-99"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="66.5868,-100.7501 71.5867,-99 66.5867,-97.2501 66.5868,-100.7501"></polygon>
+</g>
+<!-- 2&#45;&gt;3 -->
+<g id="edge2" class="edge">
+<title>2-&gt;3</title>
+<path fill="none" stroke="#cccccc" d="M108.1686,-105.8132C117.4768,-109.3038 128.9128,-113.5923 138.8467,-117.3175"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="138.2906,-118.9779 143.5867,-119.095 139.5196,-115.7008 138.2906,-118.9779"></polygon>
+</g>
+<!-- 2&#45;&gt;4 -->
+<g id="edge3" class="edge">
+<title>2-&gt;4</title>
+<path fill="none" stroke="#cccccc" d="M108.1686,-92.1868C117.4768,-88.6962 128.9128,-84.4077 138.8467,-80.6825"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="139.5196,-82.2992 143.5867,-78.905 138.2906,-79.0221 139.5196,-82.2992"></polygon>
+</g>
+<!-- 3&#45;&gt;5 -->
+<g id="edge4" class="edge">
+<title>3-&gt;5</title>
+<path fill="none" stroke="#cccccc" d="M180.1686,-126C189.3922,-126 200.705,-126 210.5754,-126"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="210.5868,-127.7501 215.5867,-126 210.5867,-124.2501 210.5868,-127.7501"></polygon>
+</g>
+<!-- 4&#45;&gt;7 -->
+<g id="edge6" class="edge">
+<title>4-&gt;7</title>
+<path fill="none" stroke="#cccccc" d="M180.1686,-72C189.3922,-72 200.705,-72 210.5754,-72"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="210.5868,-73.7501 215.5867,-72 210.5867,-70.2501 210.5868,-73.7501"></polygon>
+</g>
+<!-- 4&#45;&gt;8 -->
+<g id="edge7" class="edge">
+<title>4-&gt;8</title>
+<path fill="none" stroke="#cccccc" d="M180.1686,-58.3735C189.6461,-51.2655 201.3293,-42.503 211.387,-34.9598"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="212.6367,-36.21 215.5867,-31.81 210.5367,-33.41 212.6367,-36.21"></polygon>
+</g>
+<!-- 5&#45;&gt;6 -->
+<g id="edge5" class="edge">
+<title>5-&gt;6</title>
+<path fill="none" stroke="#cccccc" d="M252.1686,-126C261.3922,-126 272.705,-126 282.5754,-126"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="282.5868,-127.7501 287.5867,-126 282.5867,-124.2501 282.5868,-127.7501"></polygon>
+</g>
+<!-- 7&#45;&gt;9 -->
+<g id="edge8" class="edge">
+<title>7-&gt;9</title>
+<path fill="none" stroke="#cccccc" d="M252.1686,-72C261.3922,-72 272.705,-72 282.5754,-72"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="282.5868,-73.7501 287.5867,-72 282.5867,-70.2501 282.5868,-73.7501"></polygon>
+</g>
+<!-- 7&#45;&gt;10 -->
+<g id="edge9" class="edge">
+<title>7-&gt;10</title>
+<path fill="none" stroke="#cccccc" d="M252.1759,-60.2492C262.2858,-54.4142 275.3505,-47.9861 288,-45 310.2622,-39.7446 336.4615,-41.7994 354.8337,-44.5271"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="354.5869,-46.2597 359.7983,-45.3088 355.1314,-42.8023 354.5869,-46.2597"></polygon>
+</g>
+<!-- 9&#45;&gt;10 -->
+<g id="edge10" class="edge">
+<title>9-&gt;10</title>
+<path fill="none" stroke="#cccccc" d="M324.1686,-66.1961C333.3922,-63.2497 344.705,-59.6359 354.5754,-56.4829"></path>
+<polygon fill="#cccccc" stroke="#cccccc" points="355.3564,-58.0706 359.5867,-54.882 354.2913,-54.7365 355.3564,-58.0706"></polygon>
+</g>
+<!-- 1 -->
+<g id="node1" class="node">
+<title>1</title>
+<ellipse fill="#2e8b57" stroke="#b3b3b3" cx="18" cy="-99" rx="18" ry="18"></ellipse>
+<text text-anchor="middle" x="18" y="-100.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#ffffff">Consulta</text>
+<text text-anchor="middle" x="18" y="-94.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#ffffff">base</text>
+</g>
+<!-- 2 -->
+<g id="node2" class="node">
+<title>2</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="108,-117 72,-117 72,-81 108,-81 108,-117"></polygon>
+<text text-anchor="middle" x="90" y="-100.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Nivel de</text>
+<text text-anchor="middle" x="90" y="-94.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">gobierno</text>
+</g>
+<!-- 3 -->
+<g id="node3" class="node">
+<title>3</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="180,-144 144,-144 144,-108 180,-108 180,-144"></polygon>
+<text text-anchor="middle" x="162" y="-124.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Sector</text>
+</g>
+<!-- 4 -->
+<g id="node4" class="node">
+<title>4</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="180,-90 144,-90 144,-54 180,-54 180,-90"></polygon>
+<text text-anchor="middle" x="162" y="-73.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Gob local o</text>
+<text text-anchor="middle" x="162" y="-67.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">mancomunidad</text>
+</g>
+<!-- 5 -->
+<g id="node5" class="node">
+<title>5</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="252,-144 216,-144 216,-108 252,-108 252,-144"></polygon>
+<text text-anchor="middle" x="234" y="-124.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Pliego</text>
+</g>
+<!-- 6 -->
+<g id="node6" class="node">
+<title>6</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="324,-144 288,-144 288,-108 324,-108 324,-144"></polygon>
+<text text-anchor="middle" x="306" y="-127.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Unidad</text>
+<text text-anchor="middle" x="306" y="-121.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">ejecutora</text>
+</g>
+<!-- 7 -->
+<g id="node7" class="node">
+<title>7</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="252,-90 216,-90 216,-54 252,-54 252,-90"></polygon>
+<text text-anchor="middle" x="234" y="-70.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Departamento</text>
+</g>
+<!-- 8 -->
+<g id="node8" class="node">
+<title>8</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="252,-36 216,-36 216,0 252,0 252,-36"></polygon>
+<text text-anchor="middle" x="234" y="-16.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Mancomunidad</text>
+</g>
+<!-- 9 -->
+<g id="node9" class="node">
+<title>9</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="324,-90 288,-90 288,-54 324,-54 324,-90"></polygon>
+<text text-anchor="middle" x="306" y="-70.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Provincia</text>
+</g>
+<!-- 10 -->
+<g id="node10" class="node">
+<title>10</title>
+<polygon fill="#f0ffff" stroke="#b3b3b3" points="396,-67 360,-67 360,-31 396,-31 396,-67"></polygon>
+<text text-anchor="middle" x="378" y="-47.5" font-family="Helvetica,sans-Serif" font-size="5.00" fill="#000000">Municipalidad</text>
+</g>
+</g>
+</svg>

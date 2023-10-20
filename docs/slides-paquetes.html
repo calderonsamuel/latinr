@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="slides-paquetes_files/libs/revealjs/dist/theme/quarto.css">
   <link href="slides-paquetes_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -319,6 +384,8 @@
       margin-right: 0; 
     }
   </style>
+  <link href="slides-paquetes_files/libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+  <script src="slides-paquetes_files/libs/tabwid-1.1.3/tabwid.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -368,10 +435,315 @@ Samuel Calderon
 <li>Uso libre</li>
 </ul>
 
+<aside><div>
+<p><a href="https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/comunicacion/publicaciones/son-datos-abiertos" class="uri">https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/comunicacion/publicaciones/son-datos-abiertos</a></p>
+</div></aside></section>
+<section id="consulta-amigable-mef" class="slide level2">
+<h2>Consulta amigable MEF</h2>
+
+<img data-src="img/paquetes-bienvenida.png" class="r-stretch"></section>
+<section id="expandiendo-por-nivel-de-gobierno" class="slide level2">
+<h2>Expandiendo por nivel de gobierno</h2>
+
+<img data-src="img/paquetes-quien-gasta-1.png" class="r-stretch"></section>
+<section id="expandiendo-por-sector" class="slide level2">
+<h2>Expandiendo por sector</h2>
+
+<img data-src="img/paquetes-quien-gasta-2.png" class="r-stretch"></section>
+<section id="descarga-de-datos" class="slide level2">
+<h2>Descarga de datos</h2>
+
+<img data-src="img/paquetes-quien-gasta-3.png" class="r-stretch"></section>
+<section id="y-si-quisiéramos-automatizar-la-obtención-de-data" class="slide level2">
+<h2>¿Y si quisiéramos automatizar la obtención de data?</h2>
+<p>Hay una respuesta obvia…</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><code>{RSelenium}</code></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><code>{readxl}</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>¿Alguna otra opción?</p>
+</div>
+<div class="fragment">
+<p>Sí</p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li><code>{httr2}</code></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><code>{rvest}</code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Solo necesitas encontrar la API oculta</p>
+</div>
+</section>
+<section id="apis" class="slide level2">
+<h2>APIs</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="img/ServersCooksExample.jpeg" height="600"></p>
+</figure>
+</div>
+</section>
+<section id="chrome-developer-tools" class="slide level2">
+<h2>Chrome developer tools</h2>
+
+<img data-src="img/developer-tools-match.png" class="r-stretch"></section>
+<section id="traducción-a-httr2" class="slide level2">
+<h2>Traducción a <code>{httr2}</code></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>my_request <span class="ot">&lt;-</span> httr2<span class="sc">::</span><span class="fu">request</span>(</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="st">"https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx"</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb1-4"><a href="#cb1-4"></a>    httr2<span class="sc">::</span><span class="fu">req_url_query</span>(</span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="st">"_tgt"</span> <span class="ot">=</span> <span class="st">"html"</span>,</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="st">"y"</span> <span class="ot">=</span> <span class="st">"2023"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="st">"0"</span> <span class="ot">=</span> <span class="st">""</span>,</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="st">"1"</span> <span class="ot">=</span> <span class="st">"E"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9"></a>        <span class="st">"2"</span> <span class="ot">=</span> <span class="st">""</span>,</span>
+<span id="cb1-10"><a href="#cb1-10"></a>        ...</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    ) </span>
+<span id="cb1-12"><a href="#cb1-12"></a></span>
+<span id="cb1-13"><a href="#cb1-13"></a>my_request <span class="sc">%&gt;%</span> </span>
+<span id="cb1-14"><a href="#cb1-14"></a>    httr2<span class="sc">::</span><span class="fu">req_perform</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-15"><a href="#cb1-15"></a>    httr2<span class="sc">::</span><span class="fu">resp_body_html</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-16"><a href="#cb1-16"></a>    <span class="fu">scraping_with_rvest</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="fu">pre_cleaning_with_janitor</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="fu">processing_with_tidyverse</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<p>Mostrando las diez primeras filas</p>
+<div class="cell" data-hash="slides-paquetes_cache/revealjs/unnamed-chunk-4_1a7395b826951d582e262d5ad7cb9080">
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-dc6e2cb0{}.cl-dc606bc0{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-dc64d9bc{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-dc64d9d0{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-dc64f62c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc64f636{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc64f637{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc64f640{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc64f641{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-dc64f64a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-dc6e2cb0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">periodo</span></p></th><th class="cl-dc64f636"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">cod_sector</span></p></th><th class="cl-dc64f636"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">desc_sector</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">pia</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">pim</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">certificacion</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">compromiso_anual</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">atencion_de_compromiso_mensual</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">devengado</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">girado</span></p></th><th class="cl-dc64f62c"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">avance_percent</span></p></th><th class="cl-dc64f636"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">nivel</span></p></th><th class="cl-dc64f636"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">sector</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">01</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">PRESIDENCIA CONSEJO MINISTROS</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">7113435561</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">6679913095</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">6059219157</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">5898272440</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">5647623072</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">4879904587</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">4857445803</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">73.1</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">03</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">CULTURA</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">687955033</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">729521044</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">664269397</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">619639896</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">553099191</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">474550828</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">444764814</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">65.1</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">04</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">PODER JUDICIAL</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">3416910462</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">3593337124</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">3464471223</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">3276075522</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2578180322</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2500336583</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2457931018</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">69.6</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">05</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">AMBIENTAL</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">839945003</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1032603212</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">852228094</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">770199829</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">691952185</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">521538251</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">516471026</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">50.5</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">06</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">JUSTICIA</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1982774843</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2126560298</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2036853308</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1925661541</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1629097056</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1522234045</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1504971142</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">71.6</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">07</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">INTERIOR</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">11103779808</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">11694049614</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">11326408669</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">10918483836</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">8776152492</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">8589967704</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">8559936702</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">73.5</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">08</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">RELACIONES EXTERIORES</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">942523230</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">1006043646</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">943460235</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">870738578</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">773605396</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">753702221</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">748513333</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">74.9</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">09</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">ECONOMIA Y FINANZAS</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">40685170882</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">36371999939</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">32900730736</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">32297490976</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">27580850353</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">27402990222</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">27235001508</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">75.3</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">10</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">EDUCACION</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">18536967385</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">15968375786</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">13543691149</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">12276236136</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">10698153870</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">9946822999</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">9750232435</span></p></td><td class="cl-dc64f637"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">62.3</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f640"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">2023</span></p></td><td class="cl-dc64f64a"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">11</span></p></td><td class="cl-dc64f64a"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">SALUD</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">12640766157</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">13149715009</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">11322568807</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">10621855578</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">9605109744</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">8669484031</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">8486262074</span></p></td><td class="cl-dc64f641"><p class="cl-dc64d9bc"><span class="cl-dc606bc0">65.9</span></p></td><td class="cl-dc64f64a"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">E</span></p></td><td class="cl-dc64f64a"><p class="cl-dc64d9d0"><span class="cl-dc606bc0">todos</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="y-si-lo-hacemos-más-sencillo" class="slide level2">
+<h2>Y si lo hacemos más sencillo?</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">iniciar_transparencia_economica</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="fu">elegir_periodo_anual</span>(<span class="dv">2023</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="fu">elegir_quien_gasta</span>(<span class="at">nivel =</span> <span class="st">"E"</span>, <span class="at">sector =</span> <span class="st">"todos"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Seguimiento al gasto presupuestal (actualizacion diaria) ────────────────────</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Parametros de consulta ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Periodo anual: 2023</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Nivel de gobierno: E</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>• Sector: *todos*</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>── Data ──</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code></code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>ℹ No se ha ejecutado ninguna consulta</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">iniciar_transparencia_economica</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a href="#cb15-2"></a>    <span class="fu">elegir_periodo_anual</span>(<span class="dv">2023</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3"></a>    <span class="fu">elegir_quien_gasta</span>(<span class="at">nivel =</span> <span class="st">"E"</span>, <span class="at">sector =</span> <span class="st">"todos"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-4"><a href="#cb15-4"></a>    <span class="fu">consultar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="slides-paquetes_cache/revealjs/unnamed-chunk-7_915b94048e4b97d4b3705aedb4235a26">
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-d263fbb8{}.cl-d2586a6e{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d25cf0d4{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d25cf0de{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d25d0d1c{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d25d0d26{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d25d0d30{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d25d0d31{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d25d0d3a{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d25d0d44{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-d263fbb8"><thead><tr style="overflow-wrap:break-word;"><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">periodo</span></p></th><th class="cl-d25d0d26"><p class="cl-d25cf0de"><span class="cl-d2586a6e">cod_sector</span></p></th><th class="cl-d25d0d26"><p class="cl-d25cf0de"><span class="cl-d2586a6e">desc_sector</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">pia</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">pim</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">certificacion</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">compromiso_anual</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">atencion_de_compromiso_mensual</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">devengado</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">girado</span></p></th><th class="cl-d25d0d1c"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">avance_percent</span></p></th><th class="cl-d25d0d26"><p class="cl-d25cf0de"><span class="cl-d2586a6e">nivel</span></p></th><th class="cl-d25d0d26"><p class="cl-d25cf0de"><span class="cl-d2586a6e">sector</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">01</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">PRESIDENCIA CONSEJO MINISTROS</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">7113435561</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">6679913095</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">6059219157</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">5898272440</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">5647623072</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">4879904587</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">4857445803</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">73.1</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">03</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">CULTURA</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">687955033</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">729521044</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">664269397</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">619639896</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">553099191</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">474550828</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">444764814</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">65.1</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">04</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">PODER JUDICIAL</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">3416910462</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">3593337124</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">3464471223</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">3276075522</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2578180322</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2500336583</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2457931018</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">69.6</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">05</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">AMBIENTAL</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">839945003</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1032603212</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">852228094</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">770199829</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">691952185</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">521538251</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">516471026</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">50.5</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">06</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">JUSTICIA</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1982774843</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2126560298</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2036853308</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1925661541</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1629097056</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1522234045</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1504971142</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">71.6</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">07</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">INTERIOR</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">11103779808</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">11694049614</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">11326408669</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">10918483836</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">8776152492</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">8589967704</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">8559936702</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">73.5</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">08</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">RELACIONES EXTERIORES</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">942523230</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">1006043646</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">943460235</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">870738578</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">773605396</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">753702221</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">748513333</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">74.9</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">09</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">ECONOMIA Y FINANZAS</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">40685170882</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">36371999939</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">32900730736</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">32297490976</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">27580850353</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">27402990222</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">27235001508</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">75.3</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">10</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">EDUCACION</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">18536967385</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">15968375786</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">13543691149</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">12276236136</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">10698153870</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">9946822999</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">9750232435</span></p></td><td class="cl-d25d0d30"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">62.3</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d31"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">2023</span></p></td><td class="cl-d25d0d44"><p class="cl-d25cf0de"><span class="cl-d2586a6e">11</span></p></td><td class="cl-d25d0d44"><p class="cl-d25cf0de"><span class="cl-d2586a6e">SALUD</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">12640766157</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">13149715009</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">11322568807</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">10621855578</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">9605109744</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">8669484031</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">8486262074</span></p></td><td class="cl-d25d0d3a"><p class="cl-d25cf0d4"><span class="cl-d2586a6e">65.9</span></p></td><td class="cl-d25d0d44"><p class="cl-d25cf0de"><span class="cl-d2586a6e">E</span></p></td><td class="cl-d25d0d44"><p class="cl-d25cf0de"><span class="cl-d2586a6e">todos</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="infraestructura" class="slide level2">
+<h2>Infraestructura</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<ul>
+<li>cli</li>
+<li>dplyr</li>
+<li>glue</li>
+<li>httr2</li>
+<li>janitor</li>
+<li>magrittr</li>
+<li>purrr</li>
+<li>readr</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li>rlang</li>
+<li>rvest</li>
+<li>S7</li>
+<li>stats</li>
+<li>stringr</li>
+<li>tibble</li>
+<li>tidyr</li>
+<li>tidyselect</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="consulta-fácil-para-múltiples-años" class="slide level2">
+<h2>Consulta fácil para múltiples años</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">iniciar_transparencia_economica</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="fu">elegir_periodo_anual</span>(<span class="dv">2021</span><span class="sc">:</span><span class="dv">2023</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="fu">elegir_quien_gasta</span>(<span class="at">nivel =</span> <span class="st">"todos"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-4"><a href="#cb16-4"></a>    <span class="fu">consultar</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-hash="slides-paquetes_cache/revealjs/unnamed-chunk-9_70f4bb6cfb2e0bbeaee5929ab9fe687b">
+<div class="cell-output-display">
+
+<div class="tabwid"><style>.cl-d354f152{}.cl-d34b0714{font-family:'Helvetica';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-d34f6b56{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d34f6b60{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-d34f85fa{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d34f8604{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d34f8605{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d34f860e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d34f860f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-d34f8610{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-d354f152"><thead><tr style="overflow-wrap:break-word;"><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">periodo</span></p></th><th class="cl-d34f8604"><p class="cl-d34f6b60"><span class="cl-d34b0714">cod_nivel_de_gobierno</span></p></th><th class="cl-d34f8604"><p class="cl-d34f6b60"><span class="cl-d34b0714">desc_nivel_de_gobierno</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">pia</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">pim</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">certificacion</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">compromiso_anual</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">atencion_de_compromiso_mensual</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">devengado</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">girado</span></p></th><th class="cl-d34f85fa"><p class="cl-d34f6b56"><span class="cl-d34b0714">avance_percent</span></p></th><th class="cl-d34f8604"><p class="cl-d34f6b60"><span class="cl-d34b0714">nivel</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2021</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">E</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNO NACIONAL</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">127420957133</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">137635723934</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">128692164977</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">126245586814</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">125942834197</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">125746626731</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">125076056235</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">91.4</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2021</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">M</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNOS LOCALES</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">21648693818</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">45009328119</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">40452097546</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">36460611788</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">33659994797</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">32284951792</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">32249196589</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">71.7</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2021</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">R</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNOS REGIONALES</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">33960119207</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">45287165338</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">43328676775</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">42329852639</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">41194601833</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">40870240005</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">40813081393</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">90.2</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2022</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">E</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNO NACIONAL</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">139099209295</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">134800977215</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">128965526608</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">127852490337</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">127624272130</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">127462111563</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">127135284245</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">94.6</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2022</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">M</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNOS LOCALES</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">21572594607</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">52638714049</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">48341429679</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">42306446074</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">40112731692</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">37806788003</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">37742779968</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">71.8</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2022</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">R</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNOS REGIONALES</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">36330465112</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">50382364455</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">48216231478</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">45730679183</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">44774509373</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">44146508342</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">44109344831</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">87.6</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2023</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">E</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNO NACIONAL</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">141122476787</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">144355813622</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">130783058759</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">122285398875</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">106938514631</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">100931484135</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">99449717938</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">69.9</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">2023</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">M</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNOS LOCALES</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">29796996756</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">47188047505</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">39099971226</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">31293436229</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">28218821092</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">24374175490</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">23704561437</span></p></td><td class="cl-d34f8605"><p class="cl-d34f6b56"><span class="cl-d34b0714">51.7</span></p></td><td class="cl-d34f860e"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">2023</span></p></td><td class="cl-d34f8610"><p class="cl-d34f6b60"><span class="cl-d34b0714">R</span></p></td><td class="cl-d34f8610"><p class="cl-d34f6b60"><span class="cl-d34b0714">GOBIERNOS REGIONALES</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">43870800509</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">53736619731</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">48048060588</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">42394840925</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">38405409468</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">36686645188</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">35756861384</span></p></td><td class="cl-d34f860f"><p class="cl-d34f6b56"><span class="cl-d34b0714">68.3</span></p></td><td class="cl-d34f8610"><p class="cl-d34f6b60"><span class="cl-d34b0714">todos</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+</section>
+<section id="diferentes-tipos-de-consulta" class="slide level2">
+<h2>Diferentes tipos de consulta</h2>
+<ul>
+<li><code>elegir_periodo_anual()</code></li>
+<li><code>elegir_quien_gasta()</code></li>
+<li><code>elegir_en_que_se_gasta()</code></li>
+<li><code>elegir_como_se_estructura_gasto()</code></li>
+<li><code>elegir_con_que_se_financia()</code></li>
+<li><code>elegir_donde_se_gasta()</code></li>
+<li><code>elegir_cuando_se_hizo_gasto()</code></li>
+</ul>
+</section>
+<section class="slide level2">
+
+<p>Parámetros de <code>elegir_quien_gasta()</code>:</p>
+
+<img data-src="img/graph_quien_gasta.svg" class="r-stretch"></section>
+<section id="lo-que-tú-quieras" class="slide level2">
+<h2>Lo que tú quieras</h2>
+<ul>
+<li>Visualización</li>
+<li>Modelado</li>
+<li>Automatización</li>
+</ul>
+</section></section>
+<section>
+<section id="consejos" class="title-slide slide level1 center">
+<h1>Consejos</h1>
+
+</section>
+<section id="no-todas-las-apis-se-ocultan-igual" class="slide level2">
+<h2>No todas las APIs se ocultan igual</h2>
+<ul>
+<li>A veces solo necesitas mirar la URL</li>
+<li>Si piden token o captcha, puedes intentar omitirlos</li>
+<li>Pon a prueba tu creatividad</li>
+</ul>
+</section>
+<section id="usa-clases-y-métodos" class="slide level2">
+<h2>Usa clases y métodos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a>animal <span class="ot">&lt;-</span> S7<span class="sc">::</span><span class="fu">new_class</span>(</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    <span class="at">name =</span> <span class="st">"animal"</span>, </span>
+<span id="cb17-3"><a href="#cb17-3"></a>    <span class="at">properties =</span> <span class="fu">list</span>(<span class="at">nombre =</span> S7<span class="sc">::</span>class_character)</span>
+<span id="cb17-4"><a href="#cb17-4"></a>)</span>
+<span id="cb17-5"><a href="#cb17-5"></a></span>
+<span id="cb17-6"><a href="#cb17-6"></a>perro <span class="ot">&lt;-</span> S7<span class="sc">::</span><span class="fu">new_class</span>(<span class="st">"perro"</span>, <span class="at">parent =</span> animal)</span>
+<span id="cb17-7"><a href="#cb17-7"></a>pato <span class="ot">&lt;-</span> S7<span class="sc">::</span><span class="fu">new_class</span>(<span class="st">"pato"</span>, <span class="at">parent =</span> animal)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="co"># Los animales comen igual</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a>comer <span class="ot">&lt;-</span> S7<span class="sc">::</span><span class="fu">new_generic</span>(<span class="st">"comer"</span>, <span class="st">"x"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3"></a>S7<span class="sc">::</span><span class="fu">method</span>(comer, animal) <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-4"><a href="#cb18-4"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x<span class="sc">@</span>nombre,<span class="st">"dice Ñam Ñam Ñam"</span>))</span>
+<span id="cb18-5"><a href="#cb18-5"></a>}</span>
+<span id="cb18-6"><a href="#cb18-6"></a></span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="co"># Los animales hablan distinto</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a>hablar <span class="ot">&lt;-</span> S7<span class="sc">::</span><span class="fu">new_generic</span>(<span class="st">"hablar"</span>, <span class="st">"x"</span>)</span>
+<span id="cb18-9"><a href="#cb18-9"></a>S7<span class="sc">::</span><span class="fu">method</span>(hablar, perro) <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-10"><a href="#cb18-10"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x<span class="sc">@</span>nombre,<span class="st">"dice guau guau"</span>))</span>
+<span id="cb18-11"><a href="#cb18-11"></a>}</span>
+<span id="cb18-12"><a href="#cb18-12"></a></span>
+<span id="cb18-13"><a href="#cb18-13"></a>S7<span class="sc">::</span><span class="fu">method</span>(hablar, pato) <span class="ot">&lt;-</span> <span class="cf">function</span>(x) {</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(x<span class="sc">@</span>nombre,<span class="st">"dice cuac cuac"</span>))</span>
+<span id="cb18-15"><a href="#cb18-15"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section class="slide level2">
+
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="co"># Creo a mis mascotas</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a>mi_perro <span class="ot">&lt;-</span> <span class="fu">perro</span>(<span class="at">nombre =</span> <span class="st">"Goofy"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3"></a>mi_pato <span class="ot">&lt;-</span> <span class="fu">pato</span>(<span class="at">nombre =</span> <span class="st">"Donald"</span>)</span>
+<span id="cb19-4"><a href="#cb19-4"></a></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="co"># Les doy de comer</span></span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="fu">comer</span>(mi_perro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Goofy dice Ñam Ñam Ñam"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">comer</span>(mi_pato)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Donald dice Ñam Ñam Ñam"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a><span class="co"># Las hago hablar</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="fu">hablar</span>(mi_perro)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Goofy dice guau guau"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">hablar</span>(mi_pato)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Donald dice cuac cuac"</code></pre>
+</div>
+</div>
+</section></section>
+<section id="gracias" class="title-slide slide level1 center">
+<h1>Gracias!</h1>
+
 <img src="img/logo-latin-r.png" class="slide-logo r-stretch"><div class="footer footer-default">
 <p>Un paquete para facilitar la rendición de cuentas del estado peruano</p>
 </div>
-</section></section>
+</section>
     </div>
   </div>
 
@@ -583,6 +955,44 @@ Samuel Calderon
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

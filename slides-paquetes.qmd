@@ -11,6 +11,13 @@ format:
     footer: "Un paquete para facilitar la rendición de cuentas del estado peruano"
 ---
 
+```{r}
+library(perutranspaeconomica)
+
+source("R/global.R")
+```
+
+
 ## Quién soy
 
 -   Científico Político de la Universidad Antonio Ruiz de Montoya (Lima, Perú)
@@ -32,5 +39,304 @@ Los Datos Abiertos son aquellos que se encuentran disponibles en formatos están
 - Disponibles en formatos estándar
 - De fácil acceso
 - Uso libre
+
+::: aside
+<https://www.gub.uy/agencia-gobierno-electronico-sociedad-informacion-conocimiento/comunicacion/publicaciones/son-datos-abiertos>
+:::
+
+## Consulta amigable MEF
+
+![](img/paquetes-bienvenida.png)
+
+## Expandiendo por nivel de gobierno
+
+![](img/paquetes-quien-gasta-1.png)
+
+## Expandiendo por sector
+
+![](img/paquetes-quien-gasta-2.png)
+
+## Descarga de datos
+
+![](img/paquetes-quien-gasta-3.png)
+
+## ¿Y si quisiéramos automatizar la obtención de data? 
+
+Hay una respuesta obvia...
+
+. . . 
+
+::: {.columns}
+
+::: {.column width=50%}
+
+- `{RSelenium}`
+
+:::
+
+::: {.column width=50%}
+
+- `{readxl}`
+
+:::
+
+:::
+
+. . .
+
+¿Alguna otra opción?
+
+. . .
+
+Sí
+
+. . . 
+
+::: {.columns}
+
+::: {.column width=50%}
+
+- `{httr2}`
+
+:::
+
+::: {.column width=50%}
+
+- `{rvest}`
+
+:::
+
+:::
+
+. . .
+
+Solo necesitas encontrar la API oculta
+
+## APIs 
+
+![](img/ServersCooksExample.jpeg){height=600px fig-align="center"}
+
+## Chrome developer tools
+
+![](img/developer-tools-match.png)
+
+## Traducción a `{httr2}`
+
+```{r}
+#| eval: false
+#| echo: true
+
+my_request <- httr2::request(
+    "https://apps5.mineco.gob.pe/transparencia/Navegador/Navegar_7.aspx"
+    ) %>% 
+    httr2::req_url_query(
+        "_tgt" = "html",
+        "y" = "2023",
+        "0" = "",
+        "1" = "E",
+        "2" = "",
+        ...
+    ) 
+
+my_request %>% 
+    httr2::req_perform() %>% 
+    httr2::resp_body_html() %>% 
+    scraping_with_rvest() %>% 
+    pre_cleaning_with_janitor() %>% 
+    processing_with_tidyverse()
+```
+
+---
+
+Mostrando las diez primeras filas
+
+```{r}
+formato_para_presentacion <- function(.data) {
+    .data %>% 
+    head(10) %>% 
+    flextable::flextable() %>% 
+    flextable::colformat_num(big.mark = "", digits = 1)
+}
+```
+
+
+```{r}
+#| cache: true
+iniciar_transparencia_economica() %>% 
+    elegir_periodo_anual(2023) %>% 
+    elegir_quien_gasta(nivel = "E", sector = "todos") %>% 
+    consultar() %>% 
+    formato_para_presentacion()
+```
+
+## Y si lo hacemos más sencillo?
+
+```{r}
+#| echo: true
+#| message: true
+iniciar_transparencia_economica() %>% 
+    elegir_periodo_anual(2023) %>% 
+    elegir_quien_gasta(nivel = "E", sector = "todos")
+```
+
+---
+
+
+```{r }
+#| echo: true
+#| eval: false
+#| code-line-numbers: "4"
+iniciar_transparencia_economica() %>% 
+    elegir_periodo_anual(2023) %>% 
+    elegir_quien_gasta(nivel = "E", sector = "todos") %>% 
+    consultar()
+```
+
+```{r}
+#| cache: true
+iniciar_transparencia_economica() %>% 
+    elegir_periodo_anual(2023) %>% 
+    elegir_quien_gasta(nivel = "E", sector = "todos") %>% 
+    consultar() %>% 
+    formato_para_presentacion()
+```
+
+## Infraestructura
+
+::: {.columns} 
+
+::: {.column width=50%} 
+
+- cli
+- dplyr
+- glue
+- httr2
+- janitor
+- magrittr
+- purrr
+- readr
+
+:::
+
+::: {.column width=50%} 
+
+- rlang
+- rvest
+- S7
+- stats
+- stringr
+- tibble
+- tidyr
+- tidyselect
+
+:::
+
+:::
+
+
+## Consulta fácil para múltiples años
+
+```{r}
+#| eval: false
+#| echo: true
+iniciar_transparencia_economica() %>% 
+    elegir_periodo_anual(2021:2023) %>% 
+    elegir_quien_gasta(nivel = "todos") %>% 
+    consultar()
+```
+
+```{r}
+#| cache: true
+iniciar_transparencia_economica() %>% 
+    elegir_periodo_anual(2021:2023) %>% 
+    elegir_quien_gasta(nivel = "todos") %>% 
+    consultar() %>% 
+    formato_para_presentacion()
+```
+
+## Diferentes tipos de consulta
+
+- `elegir_periodo_anual()`
+- `elegir_quien_gasta()`
+- `elegir_en_que_se_gasta()`
+- `elegir_como_se_estructura_gasto()`
+- `elegir_con_que_se_financia()`
+- `elegir_donde_se_gasta()`
+- `elegir_cuando_se_hizo_gasto()`
+
+---
+
+Parámetros de `elegir_quien_gasta()`:
+
+![](img/graph_quien_gasta.svg)
+
+## Lo que tú quieras
+
+- Visualización
+- Modelado
+- Automatización
+
+# Consejos
+
+## No todas las APIs se ocultan igual
+
+- A veces solo necesitas mirar la URL
+- Si piden token o captcha, puedes intentar omitirlos
+- Pon a prueba tu creatividad
+
+## Usa clases y métodos
+
+```{r}
+#| echo: true
+animal <- S7::new_class(
+    name = "animal", 
+    properties = list(nombre = S7::class_character)
+)
+
+perro <- S7::new_class("perro", parent = animal)
+pato <- S7::new_class("pato", parent = animal)
+```
+
+---
+
+
+```{r}
+#| echo: true
+# Los animales comen igual
+comer <- S7::new_generic("comer", "x")
+S7::method(comer, animal) <- function(x) {
+    print(paste(x@nombre,"dice Ñam Ñam Ñam"))
+}
+
+# Los animales hablan distinto
+hablar <- S7::new_generic("hablar", "x")
+S7::method(hablar, perro) <- function(x) {
+    print(paste(x@nombre,"dice guau guau"))
+}
+
+S7::method(hablar, pato) <- function(x) {
+    print(paste(x@nombre,"dice cuac cuac"))
+}
+```
+
+---
+
+```{r}
+#| echo: true
+# Creo a mis mascotas
+mi_perro <- perro(nombre = "Goofy")
+mi_pato <- pato(nombre = "Donald")
+
+# Les doy de comer
+comer(mi_perro)
+comer(mi_pato)
+
+# Las hago hablar
+hablar(mi_perro)
+hablar(mi_pato)
+```
+
+# Gracias!
+
 
 
