@@ -321,17 +321,26 @@ S7::method(hablar, pato) <- function(x) {
 
 ---
 
+Creo a las mascotas
+
 ```{r}
 #| echo: true
-# Creo a mis mascotas
 mi_perro <- perro(nombre = "Goofy")
 mi_pato <- pato(nombre = "Donald")
+```
 
-# Les doy de comer
+Les doy de comer
+
+```{r}
+#| echo: true
 comer(mi_perro)
 comer(mi_pato)
+```
 
-# Las hago hablar
+Las hago hablar
+
+```{r}
+#| echo: true
 hablar(mi_perro)
 hablar(mi_pato)
 ```
